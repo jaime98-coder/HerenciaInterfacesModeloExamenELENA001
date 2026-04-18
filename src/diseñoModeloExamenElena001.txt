@@ -1,0 +1,149 @@
+package mandos
+<<abstract>> MandoADistancia
+	|
+	|- MandoTelevision
+	|- MandoMinicadena
+	|- MandoAspiradora
+	|- MandoAireAcondicionado
+
+<<interface>> ModificarVolumen
+
+<<interface>> ModificarVelocidad
+
+package mandos
+Main
+
+
+
+---------------------------------------------------------------
+<<abstract>> MandoADistancia implements Comparable<MandoADistnacia>
+---------------------------------------------------------------
+# modelo: String
+# anchura: doublé
+# altura: doublé
+# precio: doublé
+# encendido: boolean = false
+---------------------------------------------------------------
++ MandoADistancia(modelo, anchura, altura, precio, encendido)
++ <<abstract>> encenderMando(): void
++ <<abstract>> apagarMando(): void
++ equals(Object obj): boolean
++ compareTo(MandoADistancia otroMando): int
++ toString(): String
+---------------------------------------------------------------
+
+
+
+---------------------------------------------------------------
+<<interface>> ModificarVolumen
+---------------------------------------------------------------
++ subirVolumen(): void
++ bajarVolumen(): void
+---------------------------------------------------------------
+
+
+---------------------------------------------------------------
+<<interface>> ModificarVelocidad
+---------------------------------------------------------------
++ subirVelocidad(): void
++ bajarVelocidad(): void
+---------------------------------------------------------------
+
+
+---------------------------------------------------------------
+MandoTelevisor extends MandoADistancia implements ModificarVolumen
+---------------------------------------------------------------
+- volumen: int = 30
+- canal: int = 1
+---------------------------------------------------------------
+MandoTelevisor(modelo, anchura, altura, precio, volumen)
++ toString(): String
++ subirCanal(): void
++ bajarCanal(): void
+---------------------------------------------------------------
+Hereda:
+# modelo: String
+# anchura: doublé
+# altura: doublé
+# precio: doublé
+# encendido: boolean = false
+---------------------------------------------------------------
+Implementa:
++ subirVolumen(): void
++ bajarVolumen(): void
+---------------------------------------------------------------
+
+
+
+---------------------------------------------------------------
+MandoMinicadena extends MandoADistancia implements ModificarVolumen
+---------------------------------------------------------------
+- volumen: int = 30
+---------------------------------------------------------------
+MandoMinicadena(modelo, anchura, altura, precio, volumen)
++ toString(): String
+---------------------------------------------------------------
+Hereda:
+# modelo: String
+# anchura: doublé
+# altura: doublé
+# precio: doublé
+# encendido: boolean = false
+---------------------------------------------------------------
+Implementa:
++ subirVolumen(): void
++ bajarVolumen(): void
+---------------------------------------------------------------
+
+
+---------------------------------------------------------------
+MandoAspiradora extends MandoADistancia implements ModificarVelocidad
+---------------------------------------------------------------
+- velocidad: int = 0
+---------------------------------------------------------------
+MandoAspiradora(modelo, anchura, altura, precio, volumen)
++ toString(): String
+---------------------------------------------------------------
+Hereda:
+# modelo: String
+# anchura: doublé
+# altura: doublé
+# precio: doublé
+# encendido: boolean = false
+---------------------------------------------------------------
++ subirVelocidad(): void
++ bajarVelocidad(): void
+---------------------------------------------------------------
+
+
+---------------------------------------------------------------
+MandoAireAcondicionado extends MandoADistancia implements ModificarVelocidad
+---------------------------------------------------------------
+- modo: String = FRIO
+- temperatura: int
+- velocidad: int = 0
+---------------------------------------------------------------
+MandoAireAcondicionado(modelo, anchura, altura, precio, volumen)
++ cambiarModo(): void
++ subirTemperatura(): void
++ bajarTemperatura(): void
++ toString(): String
+---------------------------------------------------------------
+Hereda:
+# modelo: String
+# anchura: doublé
+# altura: doublé
+# precio: doublé
+# encendido: boolean = false
+---------------------------------------------------------------
++ subirVelocidad(): void
++ bajarVelocidad(): void
+---------------------------------------------------------------
+
+
+package mandos
+---------------------------------------------------------------
+Main
+---------------------------------------------------------------
+tablaMandos: MandoADistancia []
+---------------------------------------------------------------
